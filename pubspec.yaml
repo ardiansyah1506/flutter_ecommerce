@@ -1,0 +1,45 @@
+name: frontend
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.6.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  google_fonts: ^6.2.1
+  google_sign_in: ^6.2.2
+  googleapis: ^13.2.0
+  googleapis_auth: ^1.6.0
+  http: ^1.2.2
+  image_picker: ^1.1.2
+  shared_preferences: ^2.3.5
+  url_launcher: ^6.3.1
+  permission_handler: ^10.0.0 
+  pdf: ^3.11.1
+  excel: ^4.0.6
+  printing: ^5.13.4
+  path_provider: ^2.1.5
+  firebase_auth: ^5.3.4
+  geolocator: ^13.0.2
+  flutter_launcher_icons: ^0.14.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/logo_blankis.png"
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/service_account.json
+    - assets/regions.json
+    - assets/images/logo_blankis.png
+    - assets/images/google-icon.png
