@@ -14,7 +14,7 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   String? errorMessage;
-  final String backendUrl = "http://your-backend-url"; // Ganti dengan URL backend Anda
+  final String backendUrl = "http://blankispakis.my.id"; // Ganti dengan URL backend Anda
 
   Future<void> login() async {
     try {

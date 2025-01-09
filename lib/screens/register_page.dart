@@ -20,7 +20,7 @@ class _RegisterPageState extends State<RegisterPage> {
         emailController.text,
         passwordController.text,
         'user',
-        '5',
+        '4',
       );
 
       setState(() {

@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:frontend/services/google_services.dart';
 
 class ProductService {
-  final String baseUrl = 'https://blankis-pakis.vercel.app';
+  final String baseUrl = 'https://blankispakis.my.id';
 
   Future<List<Product>> fetchProducts() async {
     try {

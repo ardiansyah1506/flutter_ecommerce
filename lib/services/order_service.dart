@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:frontend/models/order.dart'; // Import model Order
 
 class OrderService {
-  final String baseUrl = 'https://blankis-pakis.vercel.app/order';
+  final String baseUrl = 'https://blankispakis.my.id/order';
 
   /// Membuat pesanan baru (checkout)
   Future<void> createOrder({
@@ -103,27 +103,41 @@ Future<List<Map<String, dynamic>>> getUsers() async {
 }
 
 // Mendapatkan laporan penjualan
-  Future<List<Map<String, dynamic>>> getSalesReport() async {
-    final token = await TokenManager.getToken();
-    if (token == null) {
-      throw Exception('Token not found');
-    }
-
-    final response = await http.get(
-      Uri.parse('$baseUrl/report/sales'),
-      headers: {
-        'Authorization': 'Bearer $token',
-        'Content-Type': 'application/json',
-      },
-    );
-
-    if (response.statusCode == 200) {
-      final List<dynamic> jsonData = json.decode(response.body)['sales'];
-      return List<Map<String, dynamic>>.from(jsonData);
-    } else {
-      throw Exception('Failed to load sales report: ${response.body}');
-    }
+ Future<List<Map<String, dynamic>>> getSalesReport({
+  DateTime? startDate,
+  DateTime? endDate,
+}) async {
+  final token = await TokenManager.getToken();
+  if (token == null) {
+    throw Exception('Token not found');
   }
+
+  String url = '$baseUrl/report/sales';
+   if (startDate != null && endDate != null) {
+    final start = startDate.toIso8601String().split('T').first; // Hanya ambil tanggal
+    final end = endDate.toIso8601String().split('T').first; // Hanya ambil tanggal
+    url += '?startDate=$start&endDate=$end';
+    print("start: $start");
+    print("end: $end");
+  }
+  final response = await http.get(
+    Uri.parse(url),
+    headers: {
+      'Authorization': 'Bearer $token',
+      'Content-Type': 'application/json',
+    },
+  );
+ 
+  print("url: $url");
+
+  if (response.statusCode == 200) {
+    final List<dynamic> jsonData = json.decode(response.body)['sales'];
+  print("response: $jsonData");
+    return List<Map<String, dynamic>>.from(jsonData);
+  } else {
+    throw Exception('Failed to load sales report: ${response.body}');
+  }
+}
 
   // Mendapatkan laporan transaksi
   Future<List<Map<String, dynamic>>> getTransactionReport() async {

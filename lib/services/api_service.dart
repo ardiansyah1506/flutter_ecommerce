@@ -3,7 +3,7 @@ import 'package:frontend/utils/token_manager.dart';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  final String baseUrl = 'https://blankis-pakis.vercel.app'; // Ganti dengan URL backend Anda
+  final String baseUrl = 'https://blankispakis.my.id'; // Ganti dengan URL backend Anda
 
   // Method generik untuk POST
   Future<Map<String, dynamic>> post(String endpoint, Map<String, dynamic> body) async {

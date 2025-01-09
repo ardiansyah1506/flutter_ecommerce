@@ -19,7 +19,7 @@ class GoogleAuthService {
 
       // Kirim data ke backend
       final response = await http.post(
-        Uri.parse('$backendUrl/auth/google-login'),
+        Uri.parse('$backendUrl/auth/social'),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({'email': email}),
       );

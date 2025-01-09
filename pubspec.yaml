@@ -25,21 +25,27 @@ dependencies:
   firebase_auth: ^5.3.4
   geolocator: ^13.0.2
   flutter_launcher_icons: ^0.14.2
+  intl: ^0.20.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
 
-flutter_icons:
-  android: true
+flutter_launcher_icons:
+  android: "ic_launcher"
   ios: true
-  image_path: "assets/images/logo_blankis.png"
+  image_path: "assets/images/logo.jpg"
+  min_sdk_android: 21
+  adaptive_icon_foreground: "assets/images/logo.jpg"
+  adaptive_icon_background: "#ffffff"
 
 flutter:
   uses-material-design: true
   assets:
-    - assets/service_account.json
     - assets/regions.json
+    - assets/service_account.json
     - assets/images/logo_blankis.png
     - assets/images/google-icon.png
+    - assets/images/logo.jpg
+    - assets/images/icon.png

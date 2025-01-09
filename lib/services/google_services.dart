@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:convert';
+import 'package:flutter/services.dart';
 import 'package:googleapis/drive/v3.dart' as drive;
 import 'package:googleapis_auth/auth_io.dart';
 
@@ -8,13 +9,11 @@ class GoogleDriveService {
 
   Future<drive.DriveApi> _getDriveApi() async {
     // Lokasi file service_account.json
-    final serviceAccountFile = File('assets/service_account.json');
+     final jsonString = await rootBundle.loadString('assets/service_account.json');
 
-    if (!serviceAccountFile.existsSync()) {
-      throw Exception('Service account file not found at assets/service_account.json');
-    }
+  // Decode isi file menjadi Map
+  final credentials = json.decode(jsonString);
 
-    final credentials = json.decode(serviceAccountFile.readAsStringSync());
     final authClient = await clientViaServiceAccount(
       ServiceAccountCredentials.fromJson(credentials),
       _scopes,
